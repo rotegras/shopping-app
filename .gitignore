@@ -16,3 +16,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
+
+# vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+*.un~
+*.*~
