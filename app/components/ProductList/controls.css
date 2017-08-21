@@ -1,0 +1,11 @@
+.controls {
+  background: #eee;
+  width: 100%;
+  display: relative;
+  padding: 20px;
+}
+
+.sort {
+  float: right;
+  width: auto;
+}
