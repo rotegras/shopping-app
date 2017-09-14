@@ -3,7 +3,6 @@ import products from './products.json';
 import Item from './productItem';
 import Controls from './controls';
 import styles from './products.css';
-import keyIndex from 'react-key-index';
 
 class ProductList extends React.Component { 
 
@@ -12,39 +11,35 @@ class ProductList extends React.Component {
 
     const ITEMS = products;
 
-    const idList = products.map(function(item) {
-      return item.id; 
-    });
-    
-    console.log(idList);
-
     this.state = {
       listItems: ITEMS,
-      buttonState: 0,
-      sortBy: 'price'
+      buttonState: 0
     }
   }
 
-  compareObjects = (a, b, field) => {
-    return  a['price'] - b['price'];
-    return  a[this.state.sortBy] - b[this.state.sortBy];
+  sortcopy = (arr) => {
+    return arr.concat().sort();
   }
+
+  compareObjects = (a, b) => {
+    return  a['price'] - b['price'];
+  }
+
 
   orderItems = () => {
 
-      let prevState = this.state.listItems;
+        // newItemList =  new Object{(), assign this.state.listItems.slice().sort(this.compareObjects),
+        let prevState = this.state.listItems; 
+        let sortedList =  prevState.slice().sort(this.compareObjects);
 
-      // don't mutate the original array
-        
-      let newListItems = prevState.slice().sort(this.compareObjects);
+    this.setState ({
+        // itemList:  sortedList, 
 
-      this.setState ({
-          // sortBy: field,
-          listItems: newListItems, 
-          buttonState: !this.state.buttonState, 
+        itemList: this.state.listItems.sort(this.compareObjects),
 
-      })    
+        buttonState: !this.state.buttonState, 
 
+    })    
   }
 
   render () {
