@@ -5,61 +5,60 @@ import Controls from './controls';
 import styles from './products.css';
 import keyIndex from 'react-key-index';
 
+
+
+    const  buttons = [{name: 'id',value: 1},{name: 'name', value: 0},{name: 'price', value: 0}];
+
 class ProductList extends React.Component { 
 
   constructor(props) {
     super(props); 
 
-    const ITEMS = products;
-
-    const idList = products.map(function(item) {
-      return item.id; 
-    });
-    
-    console.log(idList);
-
     this.state = {
-      listItems: ITEMS,
-      buttonState: 0,
-      sortBy: 'price'
+      sortBy: 'id',
     }
+
+    this.passButton = this.passButton.bind(this);
+    this.orderItems = this.orderItems.bind(this);
+    this.compareObjects = this.compareObjects.bind(this);
+  }
+  
+  passButton (value) {
+    this.setState({ 
+      sortBy: value, 
+    })
   }
 
   compareObjects = (a, b, field) => {
-    return  a['price'] - b['price'];
-    return  a[this.state.sortBy] - b[this.state.sortBy];
+    return  a[field] - b[field];
+    console.log(field);
   }
 
-  orderItems = () => {
-
-      let prevState = this.state.listItems;
-
-      // don't mutate the original array
-        
-      let newListItems = prevState.slice().sort(this.compareObjects);
-
-      this.setState ({
-          // sortBy: field,
-          listItems: newListItems, 
-          buttonState: !this.state.buttonState, 
-
-      })    
-
+  orderItems (field)  {
+      return  products.slice().sort(this.compareObjects);
   }
+
+
 
   render () {
     return (
       <div className={ styles.container }> 
 
+
         <div className={ styles.controls }>
-          <Controls 
-            initialButtonState = { this.state.buttonState } 
-            orderList = { this.orderItems }
-          />
+          {buttons.map((button, index) =>( 
+            
+            <Controls 
+              key={index}
+              active={this.state.sortBy}
+              buttonName={button.name}
+              passButtonDown={this.passButton}
+            />
+        ))}
         </div>
 
         <div className={ styles.list }>
-          {this.state.listItems.map((item) =>( 
+          {this.orderItems(this.state.orderBy).map((item) =>( 
             <Item
               key={item.id}          
               {...item}

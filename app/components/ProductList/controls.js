@@ -1,45 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import styles from './controls.css';
 
 
-class Controls extends React.Component  { 
-// const Controls = ()=> (
+const Controls = ({ buttonName, active, passButtonDown }) => {
 
-  constructor ({ initialButtonState }) {
-    super(); 
+  const passButtonUp = () => {
+    passButtonDown(name);
+    console.log(name);
+  };
 
-    this.state = {
-      buttonState: initialButtonState, 
-    }
-  }
-
-
-   orderItems = () => {
-
-      // let newClickState = e.target.value;
-      let prevState = this.state.buttonState;
-      this.setState ({ buttonState: !prevState }); 
-      this.props.orderList();
-
-   }
-
-render () {
   return (
       <div className= { styles.controls } >
         <div className={ styles.sortby }>
-          Sort by Price
+         Sort by {name} 
         </div>
         <input 
-          className="sort" 
           type="checkbox" 
-          name="sort" 
-          value={this.state.buttonState} 
-          onClick={() => this.orderItems()}></input>
+          name={buttonName}
+          checked={ active = buttonName ? true : false }
+          onChange={passButtonUp}
+        />
       </div>
-
-  )
+  );
 }
-// )
+
+Controls.propTypes = {
+  buttonName: PropTypes.string.isRequired,
+  active: PropTypes.string.isRequired,
 }
 
 export default Controls;
