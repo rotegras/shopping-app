@@ -16,6 +16,7 @@ class ProductList extends React.Component {
 
     this.state = {
       sortBy: 'id',
+      direction: 0,
     }
     
     this.reorder = this.reorder.bind(this);
@@ -39,10 +40,23 @@ class ProductList extends React.Component {
       return  products.slice().sort(this.compareStrings(this.state.sortBy));
   }
 
-  reorder (value) {
+  reorder (value, prevState) {
+
     this.setState({ 
       sortBy: value, 
     })
+
+   if ( value = prevState.sortBy ) { 
+      
+        this.setState({ 
+          direction: !prevState.direction, 
+        })  } 
+    else 
+    {  
+        this.setState({ 
+          direction: prevState.direction, 
+        }) 
+    }
   } 
 
   render () {
