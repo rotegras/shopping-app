@@ -17,48 +17,50 @@ class ProductList extends React.Component {
     this.state = {
       sortBy: 'id',
     }
-
-    this.passButton = this.passButton.bind(this);
+    
+    this.reorder = this.reorder.bind(this);
     this.orderItems = this.orderItems.bind(this);
-    this.compareObjects = this.compareObjects.bind(this);
-  }
-  
-  passButton (value) {
-    this.setState({ 
-      sortBy: value, 
-    })
+    this.compareStrings = this.compareStrings.bind(this);
   }
 
-  compareObjects = (a, b, field) => {
-    return  a[field] - b[field];
+  oldcompareObjects = (field) => (a, b) => {
+    return  a[field] - b[field];   
     console.log(field);
   }
 
-  orderItems (field)  {
-      return  products.slice().sort(this.compareObjects);
+
+
+  compareStrings = (field) => (a, b) => {
+      console.log('compareStrings', this.state.sortBy);
+      return a[field] > b[field];
   }
 
+  orderItems (field)  {
+      return  products.slice().sort(this.compareStrings(this.state.sortBy));
+  }
 
+  reorder (value) {
+    this.setState({ 
+      sortBy: value, 
+    })
+  } 
 
   render () {
     return (
       <div className={ styles.container }> 
-
-
-        <div className={ styles.controls }>
+        <ul className={ styles.sortclasses }>
           {buttons.map((button, index) =>( 
-            
             <Controls 
               key={index}
-              active={this.state.sortBy}
-              buttonName={button.name}
-              passButtonDown={this.passButton}
+              name={button.name}
+              checked={button.name == this.state.sortBy ? true : false}
+              action={this.reorder}
             />
         ))}
-        </div>
+        </ul>
 
         <div className={ styles.list }>
-          {this.orderItems(this.state.orderBy).map((item) =>( 
+          {this.orderItems(this.state.orderBy).map((item, index) =>( 
             <Item
               key={item.id}          
               {...item}

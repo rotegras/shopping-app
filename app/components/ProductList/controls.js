@@ -3,31 +3,31 @@ import PropTypes from 'prop-types'
 import styles from './controls.css';
 
 
-const Controls = ({ buttonName, active, passButtonDown }) => {
-
-  const passButtonUp = () => {
-    passButtonDown(name);
+const Controls = ({name, checked, action}) => {
+  
+  const callBack = (name) => {
+    action(name); 
     console.log(name);
-  };
+  }
 
-  return (
-      <div className= { styles.controls } >
-        <div className={ styles.sortby }>
-         Sort by {name} 
-        </div>
-        <input 
-          type="checkbox" 
-          name={buttonName}
-          checked={ active = buttonName ? true : false }
-          onChange={passButtonUp}
+  return(
+    <li className={ styles.li }> 
+      <span className= {styles.input}>
+        <input
+          type='checkbox'
+          checked={checked}
+          name={name}
+          onChange={(e) => callBack(name)}
         />
-      </div>
+      </span>
+     <span> Sort by: </span>
+     <span> {name} </span>
+    </li>
   );
 }
 
 Controls.propTypes = {
-  buttonName: PropTypes.string.isRequired,
-  active: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 }
 
 export default Controls;
