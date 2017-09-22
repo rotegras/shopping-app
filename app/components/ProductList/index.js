@@ -26,14 +26,14 @@ class ProductList extends React.Component {
 
   oldcompareObjects = (field) => (a, b) => {
     return  a[field] - b[field];   
-    console.log(field);
   }
 
-
-
   compareStrings = (field) => (a, b) => {
-      console.log('compareStrings', this.state.sortBy);
+    if ( this.state.direction == 0 ) {
       return a[field] > b[field];
+    } else {
+      return a[field] < b[field];
+    }
   }
 
   orderItems (field)  {
@@ -41,32 +41,30 @@ class ProductList extends React.Component {
   }
 
   reorder (value, prevState) {
-
+    if (value == this.state.sortBy) {
     this.setState({ 
       sortBy: value, 
+      direction: !this.state.direction,
     })
-
-   if ( value = prevState.sortBy ) { 
-      
-        this.setState({ 
-          direction: !prevState.direction, 
-        })  } 
-    else 
-    {  
-        this.setState({ 
-          direction: prevState.direction, 
-        }) 
+    } else {
+    this.setState({ 
+      sortBy: value, 
+      direction: this.state.direction,
+    })
     }
   } 
 
   render () {
     return (
       <div className={ styles.container }> 
+     <span> Sort by: </span>
         <ul className={ styles.sortclasses }>
+
           {buttons.map((button, index) =>( 
             <Controls 
               key={index}
               name={button.name}
+              checkedClass={button.name == this.state.sortBy ? 'arrow': 'noarrow'}
               checked={button.name == this.state.sortBy ? true : false}
               action={this.reorder}
             />

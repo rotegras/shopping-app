@@ -11,3 +11,11 @@
        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
      } 
   }
+
+
+
+    const condDirection = (value == prevState.sortBy) ? !prevState.direction : prevState.direction; 
+
+
+
+      <span {`{name}=='id' ? className={styles.arrowdown} : className={styles.arrowdow2}`}>

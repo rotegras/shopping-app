@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import styles from './controls.css';
+import FontAwesome from  'react-fontawesome';
 
 
-const Controls = ({name, checked, action}) => {
+const Controls = ({name, checked, checkedClass, action}) => {
   
   const callBack = (name) => {
     action(name); 
@@ -12,15 +13,16 @@ const Controls = ({name, checked, action}) => {
 
   return(
     <li className={ styles.li }> 
-      <span className= {styles.input}>
-        <input
-          type='checkbox'
-          checked={checked}
-          name={name}
-          onChange={(e) => callBack(name)}
-        />
+      <span className={styles.checkedClass}>
+        <label>
+          <input
+            type='checkbox'
+            checked={checked}
+            name={name}
+            onChange={(e) => callBack(name)}
+          />
+        </label>
       </span>
-     <span> Sort by: </span>
      <span> {name} </span>
     </li>
   );

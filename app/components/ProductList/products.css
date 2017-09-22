@@ -47,7 +47,7 @@
 }
 
 ul.sortclasses { 
-  display: block;
+  display: inline-block;
   height: 20px;
   list-style: none;
   width: 100%;
