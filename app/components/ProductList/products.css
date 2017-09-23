@@ -48,9 +48,19 @@
 
 ul.sortclasses { 
   display: inline-block;
-  height: 20px;
+  height: 15px;
   list-style: none;
-  width: 100%;
-  padding: 0 5px;
+  max-width: 100%;
+  padding: 15px 5px;
+  vertical-align: middle;
+  margin: 0;
+  /* height: 30px; */
  }
 
+ .sorttitle {
+  padding: 5px 10px 0 10px; 
+  display: inline-block;
+  vertical-align: middle;
+  height: 30px;
+  color: #aaa;
+ }

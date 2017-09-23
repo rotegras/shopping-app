@@ -4,16 +4,15 @@ import styles from './controls.css';
 import FontAwesome from  'react-fontawesome';
 
 
-const Controls = ({name, checked, checkedClass, action}) => {
+const Controls = ({name, checked, checkedClass, orderDirection, action}) => {
   
   const callBack = (name) => {
     action(name); 
-    console.log(name);
   }
 
   return(
     <li className={ styles.li }> 
-      <span className={styles.checkedClass}>
+      <span className={checked ? (orderDirection ? styles.arrowdown : styles.arrow) : styles.arrowhidden}>
         <label>
           <input
             type='checkbox'
@@ -23,7 +22,7 @@ const Controls = ({name, checked, checkedClass, action}) => {
           />
         </label>
       </span>
-     <span> {name} </span>
+     <span className={styles.name}> {name} </span>
     </li>
   );
 }
