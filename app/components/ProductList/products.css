@@ -51,16 +51,25 @@ ul.sortclasses {
   height: 15px;
   list-style: none;
   max-width: 100%;
-  padding: 15px 5px;
+  padding: 0 5px;
   vertical-align: middle;
   margin: 0;
-  /* height: 30px; */
+  height: 30px;
+  vertical-align: middle;
  }
 
- .sorttitle {
-  padding: 5px 10px 0 10px; 
+span.sorttitle {
+  padding: 0 10px 0 10px; 
   display: inline-block;
   vertical-align: middle;
+  line-height: 30px;
   height: 30px;
   color: #aaa;
  }
+
+.linkto {
+  color: #eee;
+  float: right;
+  cursor: pointer;
+}
+

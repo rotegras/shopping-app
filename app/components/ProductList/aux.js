@@ -12,10 +12,11 @@
      } 
   }
 
-
-
     const condDirection = (value == prevState.sortBy) ? !prevState.direction : prevState.direction; 
 
-
-
       <span {`{name}=='id' ? className={styles.arrowdown} : className={styles.arrowdow2}`}>
+
+
+App.propTypes = {
+  children: PropTypes.node.isRequired,
+}

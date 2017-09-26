@@ -3,8 +3,6 @@ import products from './products.json';
 import Item from './productItem';
 import Controls from './controls';
 import styles from './products.css';
-import keyIndex from 'react-key-index';
-
 
 
     const  buttons = [{name: 'id',value: 1},{name: 'name', value: 0},{name: 'price', value: 0}];
