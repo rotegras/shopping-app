@@ -10,7 +10,7 @@ const App = ({ children }) => (
           Relay shopping app
         </h1>
         <ul className={styles.list}>
-          <li><Link to="/">Products</Link></li>
+          <li><Link to="/">List</Link></li>
         </ul>
       </header>
 
@@ -24,4 +24,4 @@ App.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-    export default App
+export default App

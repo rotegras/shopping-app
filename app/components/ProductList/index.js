@@ -1,20 +1,25 @@
 import React from 'react'
-import products from './products.json';
+import {Router, Route, IndexRoute, Link, hashHistory} from 'react-router';
 import Item from './productItem';
 import Controls from './controls';
+
 import styles from './products.css';
 
 
     const  buttons = [{name: 'id',value: 1},{name: 'name', value: 0},{name: 'price', value: 0}];
 
 class ProductList extends React.Component { 
+   
 
   constructor(props) {
     super(props); 
 
+    const productsdata = this.props.route.data;
+
     this.state = {
       sortBy: 'id',
       orderDirection: 0,
+      products: productsdata,
     }
     
     this.reorder = this.reorder.bind(this);
@@ -35,8 +40,9 @@ class ProductList extends React.Component {
   }
 
   orderItems (field)  {
-      return  products.slice().sort(this.compareStrings(this.state.sortBy));
+      return  this.state.products.slice().sort(this.compareStrings(this.state.sortBy));
   }
+
 
   reorder (value, prevState) {
     if (value == this.state.sortBy) {
@@ -48,27 +54,31 @@ class ProductList extends React.Component {
     this.setState({ 
       sortBy: value, 
       orderDirection: this.state.orderDirection,
-    })
+    }) 
+    
     }
-    console.log('sortBy: ', this.state.sortBy);
-    console.log('orderDirection', this.state.orderDirection);
   } 
 
   render () {
+
+
     return (
       <div className={ styles.container }> 
-     <span className={ styles.sorttitle }> Sort by: </span>
-        <ul className={ styles.sortclasses }>
+      <span className={ styles.sorttitle }> Sort by: </span>
+      <ul className={ styles.sortclasses }>
 
-          {buttons.map((button, index) =>( 
-            <Controls 
-              key={index}
-              name={button.name}
-              orderDirection={this.state.orderDirection}
-              checked={button.name == this.state.sortBy ? true : false}
-              action={this.reorder}
-            />
+
+        {buttons.map((button, index) =>( 
+          <Controls 
+            key={index}
+            name={button.name}
+            orderDirection={this.state.orderDirection}
+            checked={button.name == this.state.sortBy ? true : false}
+            action={this.reorder}
+          />
+
         ))}
+
         </ul>
 
         <div className={ styles.list }>
