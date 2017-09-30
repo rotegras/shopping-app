@@ -16,15 +16,14 @@ class ProductDetail extends React.Component {
         return product.id == id;
         
     });
-console.log(item);
 
       return (
         <div className="container" >
           <div className="row">
-            <div class="col-sm-12 col-md-8 col-lg-4">
+            <div className="col-sm-8 col-md-8 col-lg-8">
               <img className="image" src={item[0].imageUrl} alt={item[0].name}/>
             </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
+            <div class="col-sm-4 col-md-4 col-lg-4">
               <h1>{item[0].name}</h1>
               <div className={styles.info}>
                 <div className={styles.price}>{item[0].price}</div>
