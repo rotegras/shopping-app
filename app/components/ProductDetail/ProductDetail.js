@@ -4,9 +4,7 @@ import styles from './ProductDetail.css'
 const ProductDetail = (props) => {
   const productsData = props.route.data
   const id = props.params.id
-  const item = productsData.find(product => {
-    return product.id === id
-  })
+  const item = productsData.find(product =>  product.id === id)
 
   return (
     <div className="container" >
@@ -23,10 +21,6 @@ const ProductDetail = (props) => {
       </div>
     </div>
   )
-}
-
-ProductDetail.propTypes = {
-  data: PropTypes.route.isRequired,
 }
 
 export default ProductDetail

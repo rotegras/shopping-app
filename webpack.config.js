@@ -27,14 +27,14 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
-      // {
-        // test: /\.js$/,
-        // loader: 'eslint-loader',
-        // exclude: /node_modules/,
-        // query: {
-          // configFile: './.eslintrc',
-        // },
-      // },
+      {
+        test: /\.js$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        query: {
+        configFile: './.eslintrc',
+        },
+      },
       {
         test: /\.svg$/,
         loader: 'babel-loader!svg-react-loader',

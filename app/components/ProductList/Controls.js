@@ -10,7 +10,7 @@ const Controls = ({ name, checked, orderDirection, action }) => {
   return (
     <li className={styles.li}>
       <span
-        className={checked ? (orderDirection ? styles.arrowdown : styles.arrow) : styles.arrowhidden}
+        className={checked ? (orderDirection ? styles.arrowdown : styles.arrowup) : styles.arrowhidden}
       >
         <input
           type="checkbox"

@@ -16,7 +16,7 @@ li {
   line-height: 30px;
 }
 
-.arrow,
+.arrowup,
 .arrowdown,
 .arrowhidden {  
   border: 1px solid #ccc;
@@ -28,7 +28,7 @@ li {
   box-sizing: border-box;
 }
 
-.arrow {
+.arrowup {
   background: #eee;
   /* background-image: url('../../../app/components/ProductList/ic_arrow_drop_down_black_24px.svg'); */
   background-image: url('./ic_arrow_drop_down_black_24px.svg');
@@ -39,13 +39,13 @@ li {
   background: #ddd;
 }
 
-.arrow input[type="checkbox" i] ,
+.arrowup input[type="checkbox" i] ,
 .arrowdown input[type="checkbox" i] ,
 .arrowhidden input[type="checkbox" i] {
     margin: 0;
 }
 
-.arrow input , 
+.arrowup input , 
 .arrowdown input , 
 .arrowhidden input { 
   opacity: 0;

@@ -11,20 +11,17 @@ class ProductList extends React.Component {
   constructor(props) {
     super(props); 
 
-    const productsdata = this.props.route.data;
-
     this.state = {
       sortBy: 'id',
       orderDirection: 0,
-      products: productsdata,
     };
     
     this.reorder = this.reorder.bind(this);
     this.orderItems = this.orderItems.bind(this);
-    this.compareStrings = this.compareStrings.bind(this);
+    this.createComparer = this.createComparer.bind(this);
   }
 
-  compareStrings = (field) => (a, b) => {
+  createComparer = (field) => (a, b) => {
     if ( this.state.orderDirection ) {
       return a[field] < b[field];
     } 
@@ -32,7 +29,7 @@ class ProductList extends React.Component {
   }
 
   orderItems (field) {
-    return  this.state.products.slice().sort(this.compareStrings(this.state.sortBy));
+    return this.props.route.data.slice().sort(this.createComparer(this.state.sortBy));
   }
 
   reorder (value, prevState) {
@@ -44,7 +41,6 @@ class ProductList extends React.Component {
     } else {
     this.setState({ 
       sortBy: value, 
-      orderDirection: this.state.orderDirection,
     }) 
     }
   } 
